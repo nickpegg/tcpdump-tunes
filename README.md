@@ -18,4 +18,4 @@ This is a terrible hack. It's mostly interesting with TCP traffic.
 * The `-c` option is required since the MIDI file can't be created until all notes (packets) are accounted for
 
 ## Credits
-Thanks to @ryanwohara for the idea
+Thanks to Ryan O'Hara for the idea
