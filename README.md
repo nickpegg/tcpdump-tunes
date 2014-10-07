@@ -4,7 +4,7 @@ Think tcpdump is too boring? Put some music to your packets!
 
 Takes tcpdump human output in, spits out a MIDI file to /tmp/tcpdump.mid.
 
-This is a terrible hack.
+This is a terrible hack. It's mostly interesting with TCP traffic.
 
 ## Installation
 1. Clone this repo
