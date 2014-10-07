@@ -46,14 +46,15 @@ def main():
             # determine the note to play based on TCP flags
             note = midi.C_0
             flags = data.get('flags', '')
-            if 'S' in flags:
-                note = midi.D_0
-            elif '.' in flags:
-                note = midi.C_0
-            elif 'F' in flags:
-                note = midi.F_0
-            elif 'R' in flags:
-                note = midi.G_0
+            if flags:
+                if 'S' in flags:
+                    note = midi.D_0
+                elif '.' in flags:
+                    note = midi.C_0
+                elif 'F' in flags:
+                    note = midi.F_0
+                elif 'R' in flags:
+                    note = midi.G_0
 
             # Determine the octave based on the src and dst IPs
             octave = hash((data['src'], data['dst'])) % 6 + 2
