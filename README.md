@@ -2,7 +2,7 @@
 
 Think tcpdump is too boring? Put some music to your packets!
 
-Takes tcpdump human output in, spits out a MIDI file to /tmp/tcpdump.mid.
+Takes tcpdump human output via stdin, spits out a MIDI file to stdout.
 
 This is a terrible hack. It's mostly interesting with TCP traffic.
 
@@ -12,7 +12,7 @@ This is a terrible hack. It's mostly interesting with TCP traffic.
 3. Enjoy some sweet jams
 
 ## Usage
-`tcpdump -n -c 100 | ./tcpdump_tunes.py; timidity /tmp/tcpdump.mid`
+`tcpdump -n -c 100 | ./tcpdump_tunes.py | timidity -`
 
 * The `-n` option is required since my regex is lazy and domain lookups are slow.
 * The `-c` option is required since the MIDI file can't be created until all notes (packets) are accounted for

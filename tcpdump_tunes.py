@@ -68,7 +68,7 @@ def main():
 
     # Dump MIDI track to stdout
     track.append(midi.EndOfTrackEvent(tick=1))
-    midi.write_midifile('test.midi', pattern)
+    midi.write_midifile(sys.stdout, pattern)
 
     return 0
 
