@@ -14,7 +14,7 @@ This is a terrible hack. It's mostly interesting with TCP traffic.
 ## Usage
 `tcpdump -n -c 100 | ./tcpdump_tunes.py | timidity -`
 
-* The `-n` option is required since my regex is lazy and domain lookups are slow.
+* The `-n` option is required since domain lookups are slow and my regex is lazy.
 * The `-c` option is required since the MIDI file can't be created until all notes (packets) are accounted for
 
 ## Credits
