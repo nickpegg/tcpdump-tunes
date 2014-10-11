@@ -2,6 +2,7 @@
 
 # Parses the text output of tcpdump (with no -v) from stdin, makes music
 
+import argparse
 import re
 import sys
 from datetime import datetime
@@ -15,6 +16,18 @@ MIN_LENGTH = 20
 
 def main():
     line_re = r"(?P<timestamp>\d{2}:\d{2}:\d{2}.\d{6}) IP (?P<src>\d+\.\d+\.\d+\.\d+)\.(?P<sport>\d+) > (?P<dst>\d+\.\d+\.\d+\.\d+)\.(?P<dport>\d+): (?:Flags \[(?P<flags>[SFPRUWE\.]+)\])?.+?length (?P<length>\d+)"
+
+    arg_parser = argparse.ArgumentParser(description="MIDI from tcpdump")
+    arg_parser.add_argument('-f',
+                            help="Output file, omit or give - for stdout",
+                            metavar='file',
+                            default='-')
+    args = arg_parser.parse_args()
+
+    if args.f == '-':
+        output_file = sys.stdout
+    else:
+        output_file = open(args.f, 'w')
 
     pattern = midi.Pattern()
     track = midi.Track()
@@ -68,7 +81,7 @@ def main():
 
     # Dump MIDI track to stdout
     track.append(midi.EndOfTrackEvent(tick=1))
-    midi.write_midifile(sys.stdout, pattern)
+    midi.write_midifile(output_file, pattern)
 
     return 0
 
